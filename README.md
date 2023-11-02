@@ -11,3 +11,9 @@
 # terraform apply -auto-approve    ---应用代码
 # terraform destroy                ---摧毁代码  
 #
+#
+#
+#
+#
+#
+##
