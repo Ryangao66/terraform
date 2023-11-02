@@ -20,3 +20,6 @@ resource "azurerm_resource_group" "resourcegroup" {
     usage = "TerraformTesting"
   }
 }
+
+
+### add some new features here
