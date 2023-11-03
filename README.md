@@ -1,14 +1,14 @@
 # Terraform
 
 
+az login                         ---login  
+terraform -help                  ---帮助  
+terraform fmt                    ---自动识别格式  
+terraform init                   ---初始化  
+terraform plan                   ---查看代码变更  
+terraform apply -auto-approve    ---应用代码  
+terraform destroy                ---摧毁代码  
 
-<p>az login                         ---login
-<br>terraform -help                  ---帮助</p>
-<br>terraform fmt                    ---自动识别格式</p>
-<br>terraform init                   ---初始化</p>
-<br>terraform plan                   ---查看代码变更</p>
-<br>terraform apply -auto-approve    ---应用代码</p>
-<br>terraform destroy                ---摧毁代码</p>
 
 
 
