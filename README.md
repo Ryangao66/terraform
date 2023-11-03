@@ -1,7 +1,6 @@
 # Terraform
 
 
-### How to use Terraform 
 
  az login                         ---\n 
  terraform -help                  ---帮助\n
