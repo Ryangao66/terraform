@@ -2,9 +2,12 @@
 
 
 
-az login                         ---login##
-terraform -help                  ---帮助##
-terraform fmt                    ---自动识别格式##
+az login                         ---login
+##
+terraform -help                  ---帮助
+##
+terraform fmt                    ---自动识别格式
+##
 terraform init                   ---初始化
 ##
 terraform plan                   ---查看代码变更
