@@ -2,10 +2,9 @@
 
 
 
-az login                         ---login
-##
-terraform -help                  ---帮助
-##
+<p>az login                         ---login
+<br>terraform -help                  ---帮助</p>
+
 terraform fmt                    ---自动识别格式
 ##
 terraform init                   ---初始化
