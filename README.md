@@ -3,7 +3,7 @@
 
 ### How to use Terraform 
 
- az login 
+ az login 11
  terraform -help                  ---帮助 
  terraform fmt                    ---自动识别格式
  terraform init                   ---初始化
