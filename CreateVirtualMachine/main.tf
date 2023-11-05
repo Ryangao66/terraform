@@ -35,15 +35,24 @@ resource "azurerm_virtual_network" "example" {
   }
 }
 
-resource "azurerm_subnet" "example" {
+resource "azurerm_subnet" "example01" {
   name                 = "subnet10.1.x"
   resource_group_name  = azurerm_resource_group.example.name
   virtual_network_name = azurerm_virtual_network.example.name
   address_prefixes     = ["10.1.0.0/16"]
+
 }
 
 
-resource "azurerm_network_interface" "example" {
+resource "azurerm_subnet" "example02" {
+  name                 = "subnet10.2.x"
+  resource_group_name  = azurerm_resource_group.example.name
+  virtual_network_name = azurerm_virtual_network.example.name
+  address_prefixes     = ["10.2.0.0/16"]
+
+}
+
+resource "azurerm_network_interface" "example01" {
   name                = "101a740"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
@@ -55,8 +64,46 @@ resource "azurerm_network_interface" "example" {
   }
 }
 
+resource "azurerm_network_interface" "example02" {
+  name                = "101b740"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.example.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+
+
 resource "azurerm_windows_virtual_machine" "example" {
   name                = "101a"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+  size                = "Standard_B2s"
+  admin_username      = "ryan"
+  admin_password      = "Welcome321!321!"
+  network_interface_ids = [
+    azurerm_network_interface.example.id,
+  ]
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2016-Datacenter"
+    version   = "latest"
+  }
+}
+
+
+resource "azurerm_windows_virtual_machine" "example" {
+  name                = "101b"
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
   size                = "Standard_B2s"
