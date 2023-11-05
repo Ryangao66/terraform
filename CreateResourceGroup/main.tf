@@ -22,9 +22,5 @@ resource "azurerm_resource_group" "resourcegroup" {
 }
 
 
-### add some new features here, so we can make it better
-### new notes
-###
-###
-###
+
 
