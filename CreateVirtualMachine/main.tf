@@ -59,7 +59,7 @@ resource "azurerm_network_interface" "example01" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.example.id
+    subnet_id                     = azurerm_subnet.example01.id
     private_ip_address_allocation = "Dynamic"
   }
 }
@@ -71,13 +71,13 @@ resource "azurerm_network_interface" "example02" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.example.id
+    subnet_id                     = azurerm_subnet.example01.id
     private_ip_address_allocation = "Dynamic"
   }
 }
 
 
-resource "azurerm_windows_virtual_machine" "example" {
+resource "azurerm_windows_virtual_machine" "example01" {
   name                = "101a"
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
@@ -85,7 +85,7 @@ resource "azurerm_windows_virtual_machine" "example" {
   admin_username      = "ryan"
   admin_password      = "Welcome321!321!"
   network_interface_ids = [
-    azurerm_network_interface.example.id,
+    azurerm_network_interface.example01.id,
   ]
 
   os_disk {
@@ -101,8 +101,7 @@ resource "azurerm_windows_virtual_machine" "example" {
   }
 }
 
-
-resource "azurerm_windows_virtual_machine" "example" {
+resource "azurerm_windows_virtual_machine" "example02" {
   name                = "101b"
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
@@ -110,7 +109,7 @@ resource "azurerm_windows_virtual_machine" "example" {
   admin_username      = "ryan"
   admin_password      = "Welcome321!321!"
   network_interface_ids = [
-    azurerm_network_interface.example.id,
+    azurerm_network_interface.example02.id,
   ]
 
   os_disk {
