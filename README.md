@@ -13,7 +13,7 @@
 
  # aztfexport
  aztfexport resource-group mra-test-aes-net-rg\n  
- https://www.youtube.com/watch?v=LWk9SU7AmDA&t=149s&ab_channel=AzureTerraform\n  
+ https://www.youtube.com/watch?v=LWk9SU7AmDA&t=149s&ab_channel=AzureTerraform  
 
 
 
