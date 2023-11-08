@@ -1,27 +1,4 @@
-resource "azurerm_virtual_machine_extension" "res-0" {
-  auto_upgrade_minor_version = true
-  name                       = "MDE.Windows"
-  publisher                  = "Microsoft.Azure.AzureDefenderForServers"
-  settings                   = "{\"autoUpdate\":true,\"azureResourceId\":\"/subscriptions/b860b083-169c-4f62-8ba6-e2f75885d4fa/resourceGroups/MRA-TEST-AES-NET-RG/providers/Microsoft.Compute/virtualMachines/vm101a\",\"forceReOnboarding\":false,\"vNextEnabled\":false}"
-  type                       = "MDE.Windows"
-  type_handler_version       = "1.0"
-  virtual_machine_id         = "/subscriptions/b860b083-169c-4f62-8ba6-e2f75885d4fa/resourceGroups/MRA-TEST-AES-NET-RG/providers/Microsoft.Compute/virtualMachines/vm101a"
-  depends_on = [
-    azurerm_windows_virtual_machine.res-3,
-  ]
-}
-resource "azurerm_virtual_machine_extension" "res-1" {
-  auto_upgrade_minor_version = true
-  name                       = "MicrosoftMonitoringAgent"
-  publisher                  = "Microsoft.EnterpriseCloud.Monitoring"
-  settings                   = "{\"workspaceId\":\"69213211-d470-49eb-bbc8-ebd8bb5b60cc\"}"
-  type                       = "MicrosoftMonitoringAgent"
-  type_handler_version       = "1.0"
-  virtual_machine_id         = "/subscriptions/b860b083-169c-4f62-8ba6-e2f75885d4fa/resourceGroups/MRA-TEST-AES-NET-RG/providers/Microsoft.Compute/virtualMachines/vm101a"
-  depends_on = [
-    azurerm_windows_virtual_machine.res-3,
-  ]
-}
+
 resource "azurerm_resource_group" "res-2" {
   location = "australiaeast"
   name     = "mra-test-aes-net-rg"
@@ -31,7 +8,7 @@ resource "azurerm_resource_group" "res-2" {
   }
 }
 resource "azurerm_windows_virtual_machine" "res-3" {
-  admin_password        = "ignored-as-imported"
+  admin_password        = "Welcome321!321!"
   admin_username        = "ryan"
   location              = "australiaeast"
   name                  = "vm101a"
@@ -60,7 +37,7 @@ resource "azurerm_windows_virtual_machine" "res-3" {
   ]
 }
 resource "azurerm_windows_virtual_machine" "res-4" {
-  admin_password        = "ignored-as-imported"
+  admin_password        = "Welcome321!321!"
   admin_username        = "ryan"
   location              = "australiaeast"
   name                  = "vm101b"
