@@ -19,6 +19,11 @@
  # Others
 
 
+ # 09 command
+
+ Get-NetAdapter | Set-NetIPInterface -Forwarding Enable 
+
+
 
 
 
