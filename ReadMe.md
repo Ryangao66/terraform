@@ -23,6 +23,9 @@
 
  Get-NetAdapter | Set-NetIPInterface -Forwarding Enable 
 
+ Test-NetConnection -ComputerName 8.8.8.8 -port 53
+ Test-NetConnection -ComputerName www.google.com -port 443
+
 
 
 
