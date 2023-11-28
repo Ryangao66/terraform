@@ -30,7 +30,7 @@ resource "azurerm_windows_virtual_machine" "res-1" {
   source_image_reference {
     offer     = "WindowsServer"
     publisher = "MicrosoftWindowsServer"
-    sku       = "2019-datacenter-smalldisk-g2"
+    sku       = "2022-datacenter-smalldisk-g2"
     version   = "latest"
   }
   depends_on = [
