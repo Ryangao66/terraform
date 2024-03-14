@@ -96,16 +96,28 @@ HIL     Subnet_HillRoad_CCTV - 192.168.79.0/24                     Subnet_Waipaw
 All IPsec tunnels will follow the template to create
 
 config vpn ipsec phase1-interface
-    edit "VPN_to_HQ_P"
-        set interface "wan1"
+
+Phase1 
+    edit "HQ_to_Tomoana"
+        set interface "Aonet"
         set ike-version 2
         set peertype any
         set net-device disable
         set proposal aes128-sha256
         set dpd on-idle
-        set remote-gw 103.240.186.198
+        set remote-gw 43.245.175.231
         set psksecret #@c2xVG-
         set dpd-retryinterval 5
     next
-end
 
+
+Phase2
+    edit "HQ_to_Tomoana"
+        set phase1name "HQ_to_Tomoana"
+        set proposal aes128-sha256
+        set auto-negotiate enable
+        set src-addr-type name
+        set dst-addr-type name
+        set src-name "SubnetGroup_HQ_VPN"
+        set dst-name "SubnetGroup_Tomoana_VPN"
+    next
