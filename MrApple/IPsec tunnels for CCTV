@@ -1,0 +1,111 @@
+The traffic we allowed in out IPsec tunnels
+
+SubnetGroup_HQ_VPN
+    Subnet_HQ_DMZ - 172.16.30.0/24
+    Subnet_HQ_Server - 192.168.10.0/24
+    Subnet_HQ_KeyTag - 10.11.10.0/24
+    Subnet_MRA_Client - 192.168.4.0/22
+
+SubnetGroup_Hill_VPN
+    Subnet_HILL_KeyTag - 10.11.11.0/24
+    Subnet_HillRoad_Server - 192.168.70.0/24
+
+SubnetGroup_LV_VPN
+    Subnet_LV_KeyTag - 10.11.12.0/24
+    Subnet_LV_Server - 192.168.80.0/24
+    Subnet_LV_CCTV - 192.168.83.0/24
+
+SubnetGroup_Tomoana_VPN
+    Subnet_Tomoana_Server - 192.168.60.0/24
+    Subnet_Tomoana_Scada - 192.168.65.0/24
+    Subnet_Tomoana_CCTV - 192.168.69.0/24
+
+SubnetGroup_WPA_VPN
+    Subnet_WPA_KeyTag - 10.11.14.0/24
+    Subnet_Waipawa_Server - 192.168.40.0/24
+    Subnet_Waipawa_CCTV - 192.168.49.0/24
+
+Server		         IP address:port
+cctv-hav            103.240.186.97:22609
+cctv-hav-int        192.168.53.20:22609
+cctv-hill           43.245.175.232:22609
+cctv-hill-int		192.168.79.221:22609
+cctv-lv		        43.245.175.167:22609
+cctv-lv-int         192.168.83.10:22609
+cctv-tom            43.245.175.231:22619
+cctv-tom-int        192.168.69.11:22619
+cctv-tom            43.245.175.231:22609
+cctv-tom-int        192.168.69.10:22609
+cctv-wha            131.203.75.233:22609
+cctv-wha-int		192.168.20.100:22609
+cctv-wpa		    103.240.186.94:22629
+cctv-wpa-int		192.168.49.100:22629
+
+
+==============================================================================================================
+        Subnet_HQ_DMZ - 172.16.30.0/24                          Subnet_LV_KeyTag - 10.11.12.0/24    
+        Subnet_HQ_Server - 192.168.10.0/24                      Subnet_LV_Server - 192.168.80.0/24
+ WHA    Subnet_HQ_KeyTag - 10.11.10.0/24                        Subnet_LV_CCTV - 192.168.83.0/24          LL
+        Subnet_MRA_Client - 192.168.4.0/22
+==============================================================================================================
+        Subnet_HQ_DMZ - 172.16.30.0/24                          Subnet_Tomoana_Server - 192.168.60.0/24    
+        Subnet_HQ_Server - 192.168.10.0/24                      Subnet_Tomoana_Scada - 192.168.65.0/24
+ WHA    Subnet_HQ_KeyTag - 10.11.10.0/24                        Subnet_Tomoana_CCTV - 192.168.69.0/24      TOM
+        Subnet_MRA_Client - 192.168.4.0/22
+==============================================================================================================
+# Subnet_HillRoad_CCTV - 192.168.79.0/24 need to be added to this tunnel for access Hill Road CCTV 
+
+        Subnet_HQ_DMZ - 172.16.30.0/24                          Subnet_HILL_KeyTag - 10.11.11.0/24    
+        Subnet_HQ_Server - 192.168.10.0/24                      Subnet_HillRoad_Server - 192.168.70.0/24
+ WHA    Subnet_HQ_KeyTag - 10.11.10.0/24                     ###Subnet_HillRoad_CCTV - 192.168.79.0/24     HIL
+        Subnet_MRA_Client - 192.168.4.0/22
+==============================================================================================================
+        Subnet_HQ_DMZ - 172.16.30.0/24                          Subnet_WPA_KeyTag - 10.11.14.0/24   
+        Subnet_HQ_Server - 192.168.10.0/24                      Subnet_Waipawa_Server - 192.168.40.0/24
+ WHA    Subnet_HQ_KeyTag - 10.11.10.0/24                        Subnet_Waipawa_CCTV - 192.168.49.0/24      WPA
+        Subnet_MRA_Client - 192.168.4.0/22
+==============================================================================================================
+
+#### New tunnels need to be created for CCTV traffice between different sites ####
+
+LL_to_TOM                                                         TOM_toLL
+        Subnet_LV_Server - 192.168.80.0/24                        Subnet_Tomoana_Server - 192.168.60.0/24   
+LL      Subnet_LV_CCTV - 192.168.83.0/24                          Subnet_Tomoana_CCTV - 192.168.69.0/24      TOM
+==============================================================================================================
+LL_to_HIL                                                         HIL_to_LL
+        Subnet_LV_Server - 192.168.80.0/24                        Subnet_HillRoad_Server - 192.168.70.0/24  
+LL      Subnet_LV_CCTV - 192.168.83.0/24                          Subnet_HillRoad_CCTV - 192.168.79.0/24     HIL
+==============================================================================================================
+LL_to_WPA                                                         WPA_to_LL
+        Subnet_LV_Server - 192.168.80.0/24                        Subnet_Waipawa_Server - 192.168.40.0/24  
+LL      Subnet_LV_CCTV - 192.168.83.0/24                          Subnet_Waipawa_CCTV - 192.168.49.0/24     WPA
+==============================================================================================================
+TOM_to_HIL                                                        HIL_to_TOM
+        Subnet_Tomoana_Server - 192.168.60.0/24                   Subnet_HillRoad_Server - 192.168.70.0/24  
+TOM     Subnet_Tomoana_CCTV - 192.168.69.0/24                     Subnet_HillRoad_CCTV - 192.168.79.0/24     HIL
+==============================================================================================================
+TOM_to_WPA                                                        WPA_to_TOM
+        Subnet_Tomoana_Server - 192.168.60.0/24                   Subnet_Waipawa_Server - 192.168.40.0/24  
+TOM     Subnet_Tomoana_CCTV - 192.168.69.0/24                     Subnet_Waipawa_CCTV - 192.168.49.0/24     WPA
+==============================================================================================================
+HIL_to_WPA                                                         WPA_to_HIL
+        Subnet_HillRoad_Server - 192.168.70.0/24                   Subnet_Waipawa_Server - 192.168.40.0/24  
+HIL     Subnet_HillRoad_CCTV - 192.168.79.0/24                     Subnet_Waipawa_CCTV - 192.168.49.0/24     WPA
+==============================================================================================================
+
+All IPsec tunnels will follow the template to create
+
+config vpn ipsec phase1-interface
+    edit "VPN_to_HQ_P"
+        set interface "wan1"
+        set ike-version 2
+        set peertype any
+        set net-device disable
+        set proposal aes128-sha256
+        set dpd on-idle
+        set remote-gw 103.240.186.198
+        set psksecret #@c2xVG-
+        set dpd-retryinterval 5
+    next
+end
+

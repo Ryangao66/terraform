@@ -7,7 +7,7 @@ resource "azurerm_resource_group" "res-0" {
   }
 }
 resource "azurerm_windows_virtual_machine" "res-1" {
-  admin_password        = "ignored-as-imported"
+  admin_password        = "Welcome321!321!"
   admin_username        = "ryan"
   location              = "australiaeast"
   name                  = "vm101a"
