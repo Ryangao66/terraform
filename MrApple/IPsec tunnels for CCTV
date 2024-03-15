@@ -1,4 +1,4 @@
-The traffic we allowed in out IPsec tunnels
+Subnet Group on Whakatu firewall
 
 SubnetGroup_HQ_VPN
     Subnet_HQ_DMZ - 172.16.30.0/24
@@ -7,7 +7,7 @@ SubnetGroup_HQ_VPN
     Subnet_MRA_Client - 192.168.4.0/22
 
 SubnetGroup_Hill_VPN
-    Subnet_HILL_KeyTag - 10.11.11.0/24
+    Subnet_HillRoad_KeyTag - 10.11.11.0/24
     Subnet_HillRoad_Server - 192.168.70.0/24
 
 SubnetGroup_LV_VPN
@@ -24,6 +24,7 @@ SubnetGroup_WPA_VPN
     Subnet_WPA_KeyTag - 10.11.14.0/24
     Subnet_Waipawa_Server - 192.168.40.0/24
     Subnet_Waipawa_CCTV - 192.168.49.0/24
+
 
 Server		         IP address:port
 cctv-hav            103.240.186.97:22609
@@ -68,7 +69,8 @@ cctv-wpa-int		192.168.49.100:22629
 
 #### New tunnels need to be created for CCTV traffice between different sites ####
 
-LL_to_TOM                                                         TOM_toLL
+==============================================================================================================
+LL_to_TOM                                                         TOM_to_LL
         Subnet_LV_Server - 192.168.80.0/24                        Subnet_Tomoana_Server - 192.168.60.0/24   
 LL      Subnet_LV_CCTV - 192.168.83.0/24                          Subnet_Tomoana_CCTV - 192.168.69.0/24      TOM
 ==============================================================================================================
@@ -95,31 +97,6 @@ HIL     Subnet_HillRoad_CCTV - 192.168.79.0/24                     Subnet_Waipaw
 
 All IPsec tunnels will follow the template to create
 
-config vpn ipsec phase1-interface
 
-Phase1 
-    edit "HQ_to_Tomoana"
-        set interface "Aonet"
-        set ike-version 2
-        set peertype any
-        set net-device disable
-        set proposal aes128-sha256
-        set dpd on-idle
-        set remote-gw 43.245.175.231
-        set psksecret #@c2xVG-
-        set dpd-retryinterval 5
-    next
-
-
-Phase2
-    edit "HQ_to_Tomoana"
-        set phase1name "HQ_to_Tomoana"
-        set proposal aes128-sha256
-        set auto-negotiate enable
-        set src-addr-type name
-        set dst-addr-type name
-        set src-name "SubnetGroup_HQ_VPN"
-        set dst-name "SubnetGroup_Tomoana_VPN"
-    next
-
-    
+config firewall address
+  edit 
