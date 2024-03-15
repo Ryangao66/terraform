@@ -28,8 +28,7 @@
 
  Install-WindowsFeature -Name web-server -IncludeManagementTools
  firewall.cpl
- 
-
+ napa.cpl
 
 
 
