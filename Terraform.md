@@ -1,7 +1,7 @@
-# Terraform
+### Terraform
 
 
-
+```shell script
  az login                         ---login  
  terraform -help                  ---帮助  
  terraform fmt                    ---自动识别格式  
@@ -9,17 +9,23 @@
  terraform plan                   ---查看代码变更  
  terraform apply -auto-approve    ---应用代码  
  terraform destroy                ---摧毁代码  
+ terraform destroy -auto-approv   ---摧毁代码  
+```
 
-
-
- # aztfexport
+ ### aztfexport
+ ```shell script
  aztfexport resource-group mra-test-aes-net-rg  
- https://www.youtube.com/watch?v=LWk9SU7AmDA&t=149s&ab_channel=AzureTerraform    
 
- # Others
+ ### https://www.youtube.com/watch?v=LWk9SU7AmDA&t=149s&ab_channel=AzureTerraform    
+
+```
 
 
- # useful command
+ ### Others
+
+
+ ### useful command
+```shell script
 
  Get-NetAdapter | Set-NetIPInterface -Forwarding Enable 
 
@@ -30,7 +36,7 @@
  firewall.cpl
  napa.cpl
 
-
+```
 
 
 
